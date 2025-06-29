@@ -1,0 +1,25 @@
+.formulario-crear-empleado{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.elemento-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.elemento-form input{
+    margin-left: 3vw;
+    margin-right: 50vw;
+}
+
+.elemento-form label{
+    margin-left: 1vw;
+}
+
+.formulario-crear-empleado button {
+  width: fit-content;
+  align-self: flex-start; 
+  margin-left: 3vw;
+}

@@ -4,7 +4,8 @@ function Navbar (){
     return(
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <Link className="navbar-brand"  to="/">HHRR</Link>
+                <Link className="navbar-brand" to="/">
+                <img src="/logo.png" width="30"  alt="imagen_logo" /> </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
