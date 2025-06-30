@@ -23,7 +23,6 @@ function Listar() {
                     <th scope="col">Apellido</th>
                     <th scope="col">Sueldo</th>
                     <th scope="col">Acción</th>
-                    <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>

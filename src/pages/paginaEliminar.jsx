@@ -19,9 +19,9 @@ function Eliminar (){
             return (
                 <section>
                     <h3 className="mt-2 mb-3 ms-3">No se encontró empleado con rut: {rut}</h3>
-                    <button className="btn btn-secondary mt-3"
-                    onClick={() =>navigate('/')}>
-                        Cancelar
+                    <button className="btn btn-secondary mt-3 ms-2"
+                    onClick={() =>navigate('/eliminar')}>
+                        Volver
                     </button>
                 </section>
             );

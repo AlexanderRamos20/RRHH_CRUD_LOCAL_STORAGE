@@ -11,8 +11,6 @@ function FilaEmpleado ({rut, datos}){
                 <Link to={`/editar/${rut}`} className="btn btn-warning btn-sm me-2">
                     Editar
                 </Link>
-            </td>
-            <td>
                 <Link to={`/eliminar/${rut}`} className="btn btn-danger btn-sm">
                     Eliminar
                 </Link>
