@@ -1,17 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 
 function Editar (){
     const { rut } = useParams();
     const navigate = useNavigate();
     const [ rutbuscado, setRutBuscado ] = useState('');
+    const empleado = JSON.parse(localStorage.getItem(rut)) || null;
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
+    const [sueldo, setSueldo] = useState('');
+    const datos = {nombre, apellido, sueldo};
     
-    
+    useEffect(() => {
+        if (rut) {
+            const empleado = JSON.parse(localStorage.getItem(rut));
+            if (empleado) {
+            setNombre(empleado.nombre || '');
+            setApellido(empleado.apellido || '');
+            setSueldo(empleado.sueldo || '');
+            }
+        }
+        }, [rut]);
+
     if (rut){
-        const empleado = JSON.parse(localStorage.getItem(rut));
 
         function actualizarEmpleado (){
-            localStorage.setItem(rut);
+            if ( !rut.trim() || !nombre.trim() || !apellido.trim() || !sueldo.trim()){
+                alert('Todos los campos son obligatorios');
+                return
+                }
+            const sueldoNumerico = Number(sueldo);
+            if (isNaN(sueldoNumerico) || sueldoNumerico < 0){
+                alert('No se ingresó un valor válido para sueldo');
+                return;
+                }
+
+            localStorage.setItem(rut, JSON.stringify(datos));
             alert(`Empleado con RUT ${rut} modificado correctamente.`)
             navigate('/')
         }
@@ -40,21 +64,27 @@ function Editar (){
                     </div>
                     <div className="mt-2 ms-5">
                         <label htmlFor="exampleInputEmail1" className="form-label">Nombre</label>
-                        <input type="text" className="form-control" id="nombre" ></input>
+                        <input type="text" className="form-control" id="nombre" value={nombre} 
+                        onChange={(e)=>{setNombre(e.target.value)}}
+                        ></input>
                     </div>
                     <div className="mt-2 ms-5">
                         <label htmlFor="exampleInputEmail1" className="form-label">Apellido</label>
-                        <input type="text" className="form-control" id="apellido" ></input>
+                        <input type="text" className="form-control" id="apellido" value={apellido}
+                        onChange={(e)=>{setApellido(e.target.value)}}
+                        ></input>
                     </div>
                     <div className="mt-2 ms-5">
                         <label htmlFor="exampleInputEmail1" className="form-label">Sueldo</label>
-                        <input type="text" className="form-control" id="sueldo" ></input>
+                        <input type="text" className="form-control" id="sueldo" value={sueldo}
+                        onChange={(e)=>{setSueldo(e.target.value)}}
+                        ></input>
                     </div>
                     <div className="mt-2">
                     <button className="btn btn-secondary ms-5 me-3" onClick={() => navigate('/editar')}>
                         Volver
                     </button>
-                    <button className="btn btn-danger">
+                    <button className="btn btn-success" onClick={actualizarEmpleado}>
                         Guardar cambios
                     </button>
                 </div>

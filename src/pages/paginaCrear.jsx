@@ -7,16 +7,22 @@ function crear (){
     const [sueldo, setSueldo] = useState('');
 
     function insertarEmpleado(){
-        if ( !rut.trim() || !nombre.trim() || !apellido.trim() ||!sueldo.trim()){
+        if ( !rut.trim() || !nombre.trim() || !apellido.trim() || !sueldo.trim()){
             alert('Todos los campos son obligatorios');
             return
         }
         const sueldoNumerico = Number(sueldo);
-        if (isNaN(sueldoNumerico || sueldoNumerico < 0)){
+        if (isNaN(sueldoNumerico) || sueldoNumerico < 0){
             alert('No se ingresó un valor válido para sueldo');
             return;
         }
 
+        const clavesExistentes = Object.keys(localStorage);
+        if (clavesExistentes.includes(rut)) {
+            alert(`Ya existe un empleado con RUT ${rut}`);
+            return;
+        }
+       
         const datos = {nombre, apellido, sueldo};
         localStorage.setItem(rut.toString(), JSON.stringify(datos));
         alert(`Empleado ${nombre  + ' ' + apellido} agregado correctamente`);
@@ -65,7 +71,7 @@ function crear (){
                 <div className="elemento-form"> 
                 <label htmlFor="sueldo">Ingrese sueldo del empleado:</label>
                 <input 
-                    type="number" 
+                    type="text" 
                     id="sueldo"
                     value={sueldo}
                     onChange={(evento)=>setSueldo(evento.target.value)} 
