@@ -17,7 +17,7 @@ function Eliminar (){
 
         if (!empleado){
             return (
-                <section>
+                <section className="section-body">
                     <h3 className="mt-2 mb-3 ms-3">No se encontró empleado con rut: {rut}</h3>
                     <button className="btn btn-secondary mt-3 ms-2"
                     onClick={() =>navigate('/eliminar')}>
@@ -28,7 +28,7 @@ function Eliminar (){
         }
 
         return (
-            <section>
+            <section className="section-body">
                 <h2 className="mt-2 mb-3 ms-3">Eliminar Empleado</h2>
                 <p className="ms-2">¿Estás seguro que deseas eliminar al empleado con RUT {rut}?</p>
                 <ul className="list-group ms-5 me-5" style={{width: '30%'}}>
@@ -37,19 +37,21 @@ function Eliminar (){
                     <li className="list-group-item">Apellido: {empleado.apellido}</li>
                     <li className="list-group-item">Sueldo: {empleado.sueldo}</li>
                 </ul>
-                <button className="btn btn-danger ms-5 me-3" onClick={eliminarEmpleado}>
-                    Confirmar eliminación
-                </button>
-                <button className="btn btn-secondary" onClick={() => navigate('/')}>
-                    Cancelar
-                </button>
+                <div className="mt-2">
+                    <button className="btn btn-danger ms-5 me-3" onClick={eliminarEmpleado}>
+                        Confirmar eliminación
+                    </button>
+                    <button className="btn btn-secondary" onClick={() => navigate('/eliminar')}>
+                        Volver
+                    </button>
+                </div>
             </section>
         );
     }
 
     //sin RUT en URL
     return(
-        <section style={{display:'flex', flexDirection:'column', maxWidth:'40%'}}>
+        <section className="section-body" style={{display:'flex', flexDirection:'column', maxWidth:'40%'}}>
             <h2 className="mt-2 mb-3 ms-2">Buscar empleado a eliminar</h2>
             <input 
             id="rut-buscado"

@@ -12,7 +12,7 @@ function Listar() {
     );
 
     return (
-        <section>
+        <section className="section-body">
             <h2 className="mt-2 mb-3">Lista de empleados:</h2>
 
             <table className="table table-striped ms-5">

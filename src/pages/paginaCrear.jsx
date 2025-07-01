@@ -29,7 +29,7 @@ function crear (){
     }
 
     return(
-        <section>
+        <section className='section-body'>
             <h2 className="mt-2 mb-3">Añada aquí nuevos trabajadores</h2>
             <form  className="formulario-crear-empleado">
                 <div className="elemento-form"> 

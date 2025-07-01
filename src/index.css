@@ -1,3 +1,6 @@
+.section-body{
+    min-height: 70vh;
+}
 .formulario-crear-empleado{
     display: flex;
     flex-direction: column;

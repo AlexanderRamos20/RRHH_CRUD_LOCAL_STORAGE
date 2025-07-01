@@ -18,7 +18,7 @@ function Editar (){
 
         if(!empleado){
             return(
-                <section>
+                <section className="section-body">
                         <h3 className="mt-2 mb-3 ms-3">No se encontró empleado con rut: {rut}</h3>
                         <button className="btn btn-secondary mt-3 ms-2"
                         onClick={() =>navigate('/editar')}>
@@ -29,28 +29,35 @@ function Editar (){
         }
 
         return(
-            <section>
+            <section className="section-body">
                 <h2 className="mt-2 mb-3 ms-3">Editar Empleado</h2>
                 <form style={{width:'60%'}}>
                     <div className="mt-2 ms-5">
                         <fieldset disabled>
-                        <label for="exampleInputEmail1" class="form-label">RUT</label>
-                        <input type="text" class="form-control" id="rut" value={rut}></input>
+                        <label htmlFor="exampleInputEmail1" className="form-label">RUT</label>
+                        <input type="text" className="form-control" id="rut" value={rut} readOnly></input>
                         </fieldset> 
                     </div>
                     <div className="mt-2 ms-5">
-                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" ></input>
+                        <label htmlFor="exampleInputEmail1" className="form-label">Nombre</label>
+                        <input type="text" className="form-control" id="nombre" ></input>
                     </div>
                     <div className="mt-2 ms-5">
-                        <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" ></input>
+                        <label htmlFor="exampleInputEmail1" className="form-label">Apellido</label>
+                        <input type="text" className="form-control" id="apellido" ></input>
                     </div>
                     <div className="mt-2 ms-5">
-                        <label for="exampleInputEmail1" class="form-label">Sueldo</label>
-                        <input type="text" class="form-control" id="sueldo" ></input>
+                        <label htmlFor="exampleInputEmail1" className="form-label">Sueldo</label>
+                        <input type="text" className="form-control" id="sueldo" ></input>
                     </div>
-                    
+                    <div className="mt-2">
+                    <button className="btn btn-secondary ms-5 me-3" onClick={() => navigate('/editar')}>
+                        Volver
+                    </button>
+                    <button className="btn btn-danger">
+                        Guardar cambios
+                    </button>
+                </div>
                 </form>
 
 
@@ -61,7 +68,7 @@ function Editar (){
     
     // Sin RUT en URL
     return(
-        <section style={{display:'flex', flexDirection:'column', maxWidth:'40%'}}>
+        <section className="section-body" style={{display:'flex', flexDirection:'column', maxWidth:'40%'}}>
             <h2 className="mt-2 mb-3 ms-2">Buscar empleado a editar</h2>
             <input 
             id="rut-buscado"
